@@ -1,0 +1,13 @@
+import { config } from 'dotenv';
+config();
+import { DataSource } from 'typeorm';
+
+export default new DataSource({
+  type: 'postgres',
+  url: process.env.DATABASE_URL,
+  entities: ['src/**/*.entity.ts'],
+  migrations: ['src/migrations/*.ts'],
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
